@@ -1,6 +1,9 @@
 using WebAPI_CRUD.Models;
 using Microsoft.EntityFrameworkCore;
 
+using WebAPI_CRUD.Services.Contract;
+using WebAPI_CRUD.Services.Implementation;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +15,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DbEmployeeContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("conection"));
 });
+
+// Agregamos los servicios
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
 var app = builder.Build();
 
