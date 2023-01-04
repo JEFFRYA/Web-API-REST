@@ -23,7 +23,6 @@ public partial class DbEmployeeContext : DbContext
     {
 
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TDepartment>(entity =>
@@ -57,6 +56,10 @@ public partial class DbEmployeeContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.IdFDepartment).HasColumnName("IdF_Department");
             entity.Property(e => e.Salary).HasColumnType("decimal(18, 2)");
+
+            entity.HasOne(d => d.IdFDepartmentNavigation).WithMany(p => p.TEmployees)
+                .HasForeignKey(d => d.IdFDepartment)
+                .HasConstraintName("FK_t_Employee_t_Department");
         });
 
         OnModelCreatingPartial(modelBuilder);
