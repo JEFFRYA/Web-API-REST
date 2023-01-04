@@ -18,7 +18,13 @@
 <div>
   <ul>
     <li>
+      <h4>Add Models</h4>
       <h5>PM> Scaffold-DbContext "Server=[Nombre del servidor]; DataBase=[Nombre de la base de datos]; Trusted_Connection=true; TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutPutDir [Nombre de la carpeta Models]
+      </h5>
+    </li>
+    <li>
+      <h4>Update Models</h4>
+      <h5>PM> Scaffold-DbContext "Server=[Nombre del servidor]; DataBase=[Nombre de la base de datos]; Trusted_Connection=true; TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutPutDir [Nombre de la carpeta Models] -force
       </h5>
     </li>
   </ul>
