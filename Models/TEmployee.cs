@@ -14,4 +14,6 @@ public partial class TEmployee
     public decimal? Salary { get; set; }
 
     public long? IdFDepartment { get; set; }
+
+    public virtual TDepartment? IdFDepartmentNavigation { get; set; }
 }

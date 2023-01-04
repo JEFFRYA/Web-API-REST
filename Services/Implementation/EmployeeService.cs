@@ -23,7 +23,7 @@ namespace WebAPI_CRUD.Services.Implementation
             try
             {
                 List<TEmployee> employees = new List<TEmployee>();
-                employees = await _dbContext.TEmployees.Include(dpt => dpt.IdFDepartment).ToListAsync();
+                employees = await _dbContext.TEmployees.Include(dpt => dpt.IdFDepartmentNavigation).ToListAsync();
 
                 return employees;
             }
@@ -38,7 +38,7 @@ namespace WebAPI_CRUD.Services.Implementation
             try
             {
                 TEmployee? employee = new TEmployee();
-                employee = await _dbContext.TEmployees.Include(dpt => dpt.IdFDepartment)
+                employee = await _dbContext.TEmployees.Include(dpt => dpt.IdFDepartmentNavigation)
                     .Where(emp => emp.IdTEmployee == IdEmployee ).FirstOrDefaultAsync();
 
                 return employee;

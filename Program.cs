@@ -4,6 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using WebAPI_CRUD.Services.Contract;
 using WebAPI_CRUD.Services.Implementation;
 
+
+using AutoMapper;
+using WebAPI_CRUD.DTOs;
+using WebAPI_CRUD.Util;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -19,6 +25,9 @@ builder.Services.AddDbContext<DbEmployeeContext>(options => {
 // Agregamos los servicios
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+
+// agregamos el servicio de automapper
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
 var app = builder.Build();
 

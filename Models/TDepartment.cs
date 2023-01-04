@@ -12,4 +12,6 @@ public partial class TDepartment
     public string? Name { get; set; }
 
     public bool? State { get; set; }
+
+    public virtual ICollection<TEmployee> TEmployees { get; } = new List<TEmployee>();
 }
