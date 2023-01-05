@@ -1,10 +1,7 @@
 using WebAPI_CRUD.Models;
 using Microsoft.EntityFrameworkCore;
-
 using WebAPI_CRUD.Services.Contract;
 using WebAPI_CRUD.Services.Implementation;
-
-
 using AutoMapper;
 using WebAPI_CRUD.DTOs;
 using WebAPI_CRUD.Util;
@@ -28,6 +25,15 @@ builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
 // agregamos el servicio de automapper
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+
+// agregamos CORS
+builder.Services.AddCors(options => {
+    options.AddPolicy("NewPolitic", app => {
+        app.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -155,6 +161,7 @@ app.MapDelete("/employee/delete/{IdT_Employee}", async (
 
 #endregion
 
-
+// Indicamos la politica que se estara ejecutando.
+app.UseCors("NewPolitic");
 
 app.Run();
