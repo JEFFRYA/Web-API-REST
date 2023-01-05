@@ -27,10 +27,6 @@ namespace WebAPI_CRUD.Util
                 .ForMember(
                     destino => destino.IdFDepartmentNavigation,
                     item => item.Ignore()
-                )
-                .ForMember(
-                    destino => destino.CreationDate,
-                    item => item.MapFrom(origen => DateTime.ParseExact(Convert.ToString(origen.CreationDate), "dd/MM/yyyy", CultureInfo.InvariantCulture))
                 );
 
             #endregion
